@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "fs-extra": "^10.1.0",
+    "mssql": "^8.1.2",
+    "nodemon": "^2.0.19"
+  },
+  "name": "jpgconverter",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js",
+    "file": "nodemon src/fileSelect.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
