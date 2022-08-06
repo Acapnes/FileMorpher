@@ -1,0 +1,28 @@
+{
+  "TablePaths": [
+    {
+      "FolderName": "Çözgü Raporları",
+      "FileTable": "FT06_CozguRaporlari"
+    },
+    {
+      "FolderName": "Dosya Ekleri",
+      "FileTable": "FT01_DosyaEkleri"
+    },
+    {
+      "FolderName": "Jakar Desenleri",
+      "FileTable": "FT06_JakarDesenleri"
+    },
+    {
+      "FolderName": "IKEA Txt Dosyaları",
+      "FileTable": "FT06_Import_IKEA_TXT_Dosyalari"
+    },
+    {
+      "FolderName": "UrunProsesParametreleri",
+      "FileTable": "FT06_UrunProsesParametreleri"
+    },
+    {
+      "FolderName": "SpectFormlari",
+      "FileTable": "FT06_UrunSpecktformlari"
+    }
+  ]
+}
