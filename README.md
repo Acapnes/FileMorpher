@@ -1,2 +1,0 @@
-# ImageFileTableTransferService
- NodeJS - MSSQL
