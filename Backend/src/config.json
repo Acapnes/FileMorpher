@@ -1,0 +1,13 @@
+{
+  "SQLConnection": {
+    "ConnString": "DESKTOP-L0UADE5",
+    "Database": "Thirdb",
+    "Userid": "sa",
+    "Password": "guncel@123"
+  },
+  "DirectoryPaths": {
+    "DirectoryMainFolderPath": "C:\\Users\\tr\\Desktop\\Deneme",
+    "DirectoryInsertedFolderPath": "C:\\Users\\tr\\Desktop\\Inserted",
+    "ConfigPath": "C:\\Users\\tr\\Desktop\\Gits\\ImageFileTableTransferService\\Backend\\src\\config.json"
+  }
+}
