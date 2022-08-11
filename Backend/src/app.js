@@ -5,15 +5,12 @@ const { ConnectandList, InsertToDatabase, SelectSystemDatabases, TransportImages
 const ConsoleLogger = require("./helpers/logging");
 const { ListFileTablesAndFolderNames, SelectMainFolderListSubFolders, ListSubFoldersImages } = require("./helpers/pathHelper");
 const SettingsConfig = require('./config.json');
-const { ConfigUpdater } = require("./helpers/jsonUpdater");
 const Paths = require('./path.json')
+const { ConfigUpdater, PathsUpdater } = require("./helpers/jsonUpdater");
 var cors = require('cors');
 
-
-
 InsertToDatabase();
-
-ConfigUpdater("a","a","a","b")
+// PathsUpdater("a", "a", 2)
 
 // ListTablesNameandStatus(function (tables) {
 //   console.log((tables[0].FileTable.name))
@@ -29,6 +26,7 @@ var config = {
 };
 
 app.use(cors());
+app.use(express.json())
 
 
 app.get("/", (req, res) => {
@@ -46,13 +44,24 @@ app.get("/settingsconfig", (req, res) => {
 })
 
 app.post("/settingsconfig/update", (req, res) => {
-  // const { ConnString, Database, Userid, Password } = req.body;
+  const { ConnString, Database, Userid, Password } = req.body;
 
-  // if (ConnString != "null" && Database != "null" && Userid != "null" && Password != "null") {
-  //   ConfigUpdater();
+  if (ConnString && Database && Userid && Password) {
+    if (Object.keys(req.body).length > 4)
+      res.status(500).send("Too many inputs")
+    if (ConfigUpdater(ConnString, Database, Userid, Password))
+      res.status(200).send("Updated Successfully")
+    else
+      res.status(404).send("Something went wrong please try again")
+  } else {
+    res.status(500).send("Please fill required fields")
+  }
+})
 
-  //   res.send("asd")
-  // }
+app.get("/paths", (req, res) => {
+
+  res.send(Paths.TablePaths)
+
 })
 
 var server = app.listen(1575, function () {
