@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="bootstrap.icons.css">
+</head>
+
+<body style="overflow-x: hidden;">
+  <header>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="http://localhost:1575/">
+        <img src="gncl_duz_beyaz.png" width="220" height="45" class="d-inline-block align-top" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <button class="btn btn-outline-secondary mr-2 mt-1" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+              id="connectionConfigScreenButton" href="">Connection Config</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-secondary mr-2 mt-1" id="pathConfigScreenButton" href="">Path Config</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-secondary mr-2 mt-1" id="pathListingScreenButton"
+              class="btn btn-outline-success mr-2 mt-1">Path Listing </button>
+          </li>
+          <li class="nav-item">
+            <button id="logScreenButton" class="btn btn-outline-secondary mr-2 mt-1" href="">Log Kayıtları</button>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Server Restart </button>
+          <button class="btn btn-outline-success my-2 mx-2 my-sm-0" type="submit">Update Database</button>
+        </form>
+      </div>
+    </nav>
+</header>
+
+  <main style="margin-top:80px">
+    <div class="container">
+
+
+
+
+
+      <section id="connectionConfigSection" class="py-5 text-center">
+        <!-- Connection Bilgileri -->
+        <div  class="col-md-12 order-md-1">
+          <div class="row">
+
+            <div class="col-md-3 mb-3">
+              <label for="exampleFormControlTextarea1">
+                <img src="server.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Server</a>
+              </label>
+              <input id="ConnString" type="text" class="form-control" placeholder="Server..."
+                value=<%-SettingsConfig.SQLConnection.ConnString%>>
+            </div>
+
+
+            <div class="col-md-3 mb-3">
+              <label for="inputPassword4">
+                <img src="database.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Database</a></label>
+              <input id="Database" type="text" class="form-control" placeholder="Database name..."
+                value=<%-SettingsConfig.SQLConnection.Database%>>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="inputPassword4">
+                <img src="person.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">User Id</a></label>
+              </label>
+              <input id="Userid" type="text" class="form-control" placeholder="User id..."
+                value=<%-SettingsConfig.SQLConnection.Userid%>>
+            </div>
+
+
+            <div class="col-md-3 mb-3">
+              <label for="inputPassword4">
+                <img src="lock.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Password</a></label>
+              </label>
+              <input id="Password" type="password" class="form-control" placeholder="Password..."
+                value=<%-SettingsConfig.SQLConnection.Password%>>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal"
+            data-target="#configUpdateModal">
+            <img src="save.svg" style="margin-right:5px;" alt="icon">
+            <a style="width: 135px;">Save Changes</a>
+          </button>
+          <!-- <button type="submit" id="saveChange" class="btn btn-secondary btn-lg btn-block">
+            <img src="save.svg" alt="icon" /> Save Changes</button> -->
+
+        </div>
+        <hr>
+      </section>
+
+      <section id="pathConfigSection" class="jumbotron py-5 text-center">
+        <!-- Bilgisayarda belirtilen path bilgileri -->
+        <div class="col-md-12 order-md-1">
+          <div class="row">
+
+            <div class="col-md-6 mb-3">
+              <label for="Folder">
+                <img src="folder2.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Images</a>
+              </label>
+              <input id="MainFolderPath" type="text" class="form-control"
+                value=<%-SettingsConfig.DirectoryPaths.DirectoryMainFolderPath%>>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="Folder">
+                <img src="folder2.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Transferred</a>
+              </label>
+              <input id="InsertedFolderPath" type="text" class="form-control"
+                value=<%-SettingsConfig.DirectoryPaths.DirectoryInsertedFolderPath%>>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="Folder2">
+                <img src="folder2.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Non-Transferable</a>
+              </label>
+              <input id="NotInsertedFolderPath" type="text" class="form-control"
+                value=<%-SettingsConfig.DirectoryPaths.DirectoryNotInsertedFolderPath%>>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="Config2">
+                <img src="config.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Config2</a>
+              </label>
+              <input id="ConfigPath" type="text" class="form-control"
+                value=<%-SettingsConfig.DirectoryPaths.ConfigPath%>>
+            </div>
+
+            <div class="col-md-12 mb-3">
+              <label for="Config">
+                <img src="config.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Config</a>
+              </label>
+              <input id="PathsPath" type="text" class="form-control" value=<%-SettingsConfig.DirectoryPaths.PathsPath%>>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="col-md-12 order-md-1">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+              
+            <% SettingsConfig.ApplicationSettings.AllowedExtensions.forEach((extension,index)=> { %>
+
+              <div class="col-md-1 mt-1">
+                <label><%-extension.extension%></label>
+                <div class="pt-2">
+                    <input class="text-center" id="Extension" class="form-check-input"
+                        data-toggle="tooltip" data-placement="bottom" title="Tablonun aktifliğini belirler."
+                        type="checkbox" />
+                </div>
+              </div>
+
+              <% }) %>
+              </div>
+            </div>
+              <div class="col-md-2">
+                <label>Max Size</label>
+                <select id="maxFileSize" class="form-select w-100 form-control" aria-label="Default select example">
+                    <option value="0">3 mb</option>
+                    <option value="1">5 mb</option>
+                    <option value="2">10 mb</option>
+                  </select>
+            </div> 
+
+        </div>
+        <hr>
+        <div class="col-md-12">
+          <label></label>
+          <button id="directoryPathsButton" class="btn btn-secondary btn-lg btn-block" type="submit">
+            <img src="save.svg" alt="icon" /> Save Changes</button>
+        </div>
+      </section>
+
+      <section id="pathListSection" class="jumbotron py-5 text-center">
+
+        <!-- Path Ekleme -->
+        <div class="col-md-12 order-md-1">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="filetable">
+                <img src="file-plus.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">File Table</a></label>
+              <input id="addNewFileTable" type="text" placeholder="File table" class="form-control" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="folder">
+                <img src="folder-plus.svg" style="margin-right:5px;" alt="icon">
+                <a style="width: 135px;">Folder Name</a></label>
+              <input id="addNewFolderName" placeholder="Folder name" type="text" class="form-control" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="folder">
+              </label>
+              <button id="addNewButton" class="btn btn-secondary btn-lg btn-block" type="submit">
+                <img src="save.svg" alt="icon" /> Add</button>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <!-- Bilgisayarda belirtilen path bilgileri -->
+        <div class="col-md-12 order-md-1">
+            <% Paths.TablePaths.forEach((path,index)=> { %>
+                <div id="PathMenu" class="row">
+
+                    <div class="col-md-3 mb-3">
+                        <label>
+                            <img src="../file.svg" alt="icon">
+                            <a style="width: 135px;"> File Table</a></label>
+                        <input id="FileTable" type="text" class="form-control" value=<%-path.FileTable%>>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <label>
+                            <img src="../folder2.svg" alt="icon">
+                            <a style="width: 135px;"> Folder Name</a></label>
+                        <input id="FolderName" type="text" class="form-control" value=<%-path.FolderName%>>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <label>
+                            <img src="../folder2.svg" alt="icon">
+                            <a style="width: 135px;"> Procedure Name</a></label>
+                        <input id="ProcedureName" type="text" class="form-control" value=<%-path.Procedure%>>
+                    </div>
+
+                    <div class="col-md-1 mb-3">
+                        <label>Active</label>
+                        <div class="pt-2">
+                            <input class="text-center" id="Status" class="form-check-input"
+                                data-toggle="tooltip" data-placement="bottom" title="Tablonun aktifliğini belirler."
+                                type="checkbox" />
+                        </div>
+                    </div>
+                    <div class="col-md-1 mb-3">
+                        <label>Copy</label>
+                        <div class="pt-1">
+                            <input class="text-center" id="CopyOrCut" class="form-check-input"
+                                data-toggle="tooltip" data-placement="bottom" title="Tablonun kopyalacağını veya taşınacağını belirler."
+                                type="checkbox" />
+                        </div>
+                    </div>
+                    <div class="col-md-1 mb-3">
+                        <label>OverWrite</label>
+                        <div class="pt-1">
+                            <input class="text-center" id="OverWrite" class="form-check-input"
+                                data-toggle="tooltip" data-placement="bottom" title="Eklenecek olan resimlerin üzerine yaz seçeneği."
+                                type="checkbox" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-4">
+                        <select id="SelectedDate" class="form-select w-100 form-control" aria-label="Default select example">
+                            <option value="0">Bugün Hariç Hepsini At</option>
+                            <option value="1">Sadece Bugünü At</option>
+                            <option value="2">Hepsini At</option>
+                          </select>
+                    </div>  
+
+                </div>
+                <hr>
+                <% }) %>
+                    <!-- BUTTONS -->
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label></label>
+                            <button id="pathSaveButton" class="btn btn-secondary btn-lg btn-block"
+                                type="submit">
+                                <img src="../save.svg" style="margin-right:5px;" alt="icon">
+                                <a style="width: 135px;">Save Changes</a>
+                            </button>
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label></label>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal"
+                                data-target="#deleteModalCenter">
+                                <img src="../trash.svg" style="margin-right:5px;" alt="icon">
+                                <a style="width: 135px;">Clear Transferred Folder</a>
+                            </button>
+
+                        </div>
+
+                        <!-- Aktarılanları sil Modal -->
+                        <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        Are you sure?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button id="deleteInsertedButton" type="button" class="btn btn-primary"
+                                            data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">Delete</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BUTTONS -->
+        </div>
+    </section>
+
+         <!-- Aktarılanları sil Modal -->
+         <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+           <div class="modal-content">
+             <div class="modal-body">
+               Are you sure?
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button id="deleteInsertedButton" type="button" class="btn btn-primary" data-dismiss="modal"
+                 aria-label="Close">
+                 <span aria-hidden="true">Delete</span>
+               </button>
+             </div>
+           </div>
+         </div>
+       </div>
+    
+      <!-- Config Degistirme Modal -->
+      <div class="modal fade" id="configUpdateModal" tabindex="-1" role="dialog"
+      aria-labelledby="configUpdateModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            Are you sure?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="saveChange" type="button" class="btn btn-primary" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">Save</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- BUTTONS -->
+
+   <section id="logSection" class="py-5 text-center">
+    <div class="container">
+      <div class="row d-flex justify-content-end">
+        <div>
+          <!-- BUTTONS -->
+          <button id="reloadLogsButton" class=" btn btn-outline-success mr-2" type="submit">
+            Yenile
+          </button>
+          <button id="clearLogsButton" class="btn btn-secondary" type="submit">
+            Kayıtları Sil
+          </button>
+        </div>
+        <div class="col-md-12 pt-3 form-group">
+          <form action="/action_page.php">
+            <textarea id="logsInput" id="w3review" name="w3review" rows="50" class="form-control"></textarea>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    </div>
+  </main>
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© Copyright 2022 Güncel Yazılım. Tüm hakları Saklıdır. v1.0.0</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="https://guncelyazilim.com.tr/kisisel-verilerin-korunmasi/">KVKK Aydınlatma
+          Metni</a></li>
+      <li class="list-inline-item"><a href="https://guncelyazilim.com.tr/guncel-yazilim-kvkk-basvuru-formu.pdf">KVKK
+          Başvuru Formu</a></li>
+      <li class="list-inline-item"><a href="https://guncelyazilim.com.tr/urunler/">Ürünlerimiz</a></li>
+    </ul>
+  </footer>
+
+  <script>
+
+    const connectionConfigSection = document.getElementById("connectionConfigSection");
+    const pathConfigSection = document.getElementById("pathConfigSection");
+    const pathListSection = document.getElementById("pathListSection");
+    const logSection = document.getElementById("logSection");
+
+    connectionConfigSection.style.display = "block"
+    pathConfigSection.style.display = "none"
+    pathListSection.style.display = "none"
+    logSection.style.display = "none"
+
+    const connectionConfigScreenButton = document.getElementById("connectionConfigScreenButton");
+    const pathConfigScreenButton = document.getElementById("pathConfigScreenButton");
+    const pathListingScreenButton = document.getElementById("pathListingScreenButton");
+    const logScreenButton = document.getElementById("logScreenButton");
+
+    if(connectionConfigScreenButton){
+      
+      connectionConfigScreenButton.addEventListener('click',()=>{
+        connectionConfigSection.style.display = "block"
+        pathConfigSection.style.display = "none"
+        pathListSection.style.display = "none"
+        logSection.style.display = "none"
+        
+        connectionConfigScreenButton.classList.remove("btn-outline-secondary")
+        connectionConfigScreenButton.classList.add("btn-warning")
+
+        pathConfigScreenButton.classList.remove("btn-warning")
+        pathConfigScreenButton.classList.add("btn-outline-secondary")
+        
+        pathListingScreenButton.classList.remove("btn-warning")
+        pathListingScreenButton.classList.add("btn-outline-secondary")
+
+        logScreenButton.classList.remove("btn-warning")
+        logScreenButton.classList.add("btn-outline-secondary")
+        
+      })
+    }
+
+    if(pathConfigScreenButton){
+      pathConfigScreenButton.addEventListener('click',()=>{
+        connectionConfigSection.style.display = "none"
+        pathConfigSection.style.display = "block"
+        pathListSection.style.display = "none"
+        logSection.style.display = "none"
+
+        connectionConfigScreenButton.classList.remove("btn-warning")
+        connectionConfigScreenButton.classList.add("btn-outline-secondary")
+
+        pathConfigScreenButton.classList.remove("btn-outline-secondary")
+        pathConfigScreenButton.classList.add("btn-warning")
+        
+        pathListingScreenButton.classList.remove("btn-warning")
+        pathListingScreenButton.classList.add("btn-outline-secondary")
+
+        logScreenButton.classList.remove("btn-warning")
+        logScreenButton.classList.add("btn-outline-secondary")
+
+      })
+    }
+
+    if(pathListingScreenButton){
+      pathListingScreenButton.addEventListener('click',()=>{
+        connectionConfigSection.style.display = "none"
+        pathConfigSection.style.display = "none"
+        pathListSection.style.display = "block"
+        logSection.style.display = "none"
+
+        connectionConfigScreenButton.classList.remove("btn-warning")
+        connectionConfigScreenButton.classList.add("btn-outline-secondary")
+
+        pathConfigScreenButton.classList.remove("btn-warning")
+        pathConfigScreenButton.classList.add("btn-outline-secondary")
+        
+        pathListingScreenButton.classList.remove("btn-outline-secondary")
+        pathListingScreenButton.classList.add("btn-warning")
+
+        logScreenButton.classList.remove("btn-warning")
+        logScreenButton.classList.add("btn-outline-secondary")
+
+      })
+    }
+
+    if(logScreenButton){
+      logScreenButton.addEventListener('click',()=>{
+        connectionConfigSection.style.display = "none"
+        pathConfigSection.style.display = "none"
+        pathListSection.style.display = "none"
+        logSection.style.display = "block"
+
+        connectionConfigScreenButton.classList.remove("btn-warning")
+        connectionConfigScreenButton.classList.add("btn-outline-secondary")
+
+        pathConfigScreenButton.classList.remove("btn-warning")
+        pathConfigScreenButton.classList.add("btn-outline-secondary")
+        
+        pathListingScreenButton.classList.remove("btn-warning")
+        pathListingScreenButton.classList.add("btn-outline-secondary")
+
+        logScreenButton.classList.remove("btn-outline-secondary")
+        logScreenButton.classList.add("btn-warning")
+
+      })
+    }
+
+        // Uygulamanın loadında pathlerin status bilgilerini çeker
+        const allStatus = document.querySelectorAll("#Status")
+        const allCopyOrCut = document.querySelectorAll("#CopyOrCut")
+        const allSelectedDate = document.querySelectorAll("#SelectedDate")
+        const allOverWrite = document.querySelectorAll("#OverWrite")
+        fetch("http://localhost:1575/paths", {
+            method: "GET",
+        }).then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].Status)
+                allStatus[i].checked = "true"
+                if(data[i].CopyOrCut)
+                allCopyOrCut[i].checked = "true"
+                allSelectedDate[i].value = data[i].SelectedDate
+                if(data[i].OverWrite)
+                allOverWrite[i].checked = "true"
+            }
+        })
+        .catch(err => console.log(err))
+
+        // Uygulamanın loadında settingscofig extension bilgilerini çeker
+        const allExtensions = document.querySelectorAll("#Extension")
+        fetch("http://localhost:1575/settingsConfig/extensions", {
+            method: "GET",
+        }).then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].allow)
+                allExtensions[i].checked = "true"
+            }
+        })
+        .catch(err => console.log(err))
+
+
+        const maxFileSize = document.getElementById("maxFileSize")
+        fetch("http://localhost:1575/settingsConfig/maxfilesize", {
+            method: "GET",
+        }).then(response => response.text())
+        .then(data => {
+          if(data == 3145728)
+            maxFileSize.value = 0
+          else if( data  == 5242880)
+            maxFileSize.value = 1
+          else if( data == 10485760)
+            maxFileSize.value = 2
+        })
+        .catch(err => console.log(err))
+
+    /// Config Update
+    const saveChangesButton = document.getElementById("saveChange");
+    const ConnString = document.getElementById("ConnString");
+    const Database = document.getElementById("Database");
+    const Userid = document.getElementById("Userid");
+    const Password = document.getElementById("Password");
+
+    if (saveChangesButton) {
+      saveChangesButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        fetch("http://localhost:1575/settingsconfig/update", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            "ConnString": ConnString.value,
+            "Database": Database.value,
+            "Userid": Userid.value,
+            "Password": Password.value
+          })
+        }).then(response => {
+          if(response.status == 200){
+            alert("Updated Successfully")
+          }else{
+            alert("User login failed!")
+          }
+        })          
+          .catch(err => console.log(err))
+      });
+    }
+
+    /// Config Paths update
+    const directoryPathsButton = document.getElementById("directoryPathsButton");
+    const MainFolderPath = document.getElementById("MainFolderPath");
+    const InsertedFolderPath = document.getElementById("InsertedFolderPath");
+    const NotInsertedFolderPath = document.getElementById("NotInsertedFolderPath");
+    const ConfigPath = document.getElementById("ConfigPath");
+    const PathsPath = document.getElementById("PathsPath");
+
+    if (directoryPathsButton) {
+      directoryPathsButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        fetch("http://localhost:1575/settingsconfig/paths/update", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            "MainFolderPath": MainFolderPath.value,
+            "InsertedFolderPath": InsertedFolderPath.value,
+            "NotInsertedFolderPath": NotInsertedFolderPath.value,
+            "ConfigPath": ConfigPath.value,
+            "PathsPath": PathsPath.value
+          })
+        }).then(response => response.json())
+        .then(data => {
+          if(data === true)
+            alert("Updated Successfully")
+          else
+            alert("Something went wrong.")
+        })
+          .catch(err => console.log(err))
+          /// Extension Edit
+        for(let i = 0 ; i<allExtensions.length;i++){
+          fetch("http://localhost:1575/settingsconfig/extensions/update", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            "Index": i,
+            "State": allExtensions[i].checked,
+          })
+        }).catch(err => console.log(err))
+        }
+        let fetchMaxFileSize = "3145728"
+        if(maxFileSize.value == 0)
+          fetchMaxFileSize ="3145728"
+        else if(maxFileSize.value == 1)
+          fetchMaxFileSize ="5242880"
+        else if(maxFileSize.value == 2)
+          fetchMaxFileSize ="10485760"
+
+        fetch("http://localhost:1575/settingsconfig/maxfilesize/update", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            "MaxFileSize": fetchMaxFileSize,
+          })
+        }).catch(err => console.log(err))
+      });
+    }
+
+        /// Path Edit
+        const pathSaveButton = document.getElementById("pathSaveButton");
+        const allPathMenu = document.querySelectorAll("#PathMenu")
+        const allFileTables = document.querySelectorAll("#FileTable")
+        const allFolderNames = document.querySelectorAll("#FolderName")
+        const allProcedureNames = document.querySelectorAll("#ProcedureName")
+        
+        
+        if (pathSaveButton) {
+            pathSaveButton.addEventListener("click", () => {
+                for (var i = 0; i < allPathMenu.length; i++) {
+                    fetch("http://localhost:1575/paths/update", {
+                        method: "POST",
+                        headers: { "content-type": "application/json" },
+                        body: JSON.stringify({
+                            "FileTable": allFileTables[i].value.replace(/ /g, '_'),
+                            "FolderName": allFolderNames[i].value.replace(/ /g, '_'),
+                            "Status": allStatus[i].checked,
+                            "SelectedDate": allSelectedDate[i].value,
+                            "CopyOrCut": allCopyOrCut[i].checked,
+                            "OverWrite": allOverWrite[i].checked,
+                            "Procedure": allProcedureNames[i].value,
+                            "Index": i
+                        })
+                    }).catch(err => console.log(err))
+                }
+            });
+        }
+
+        /// Path Add
+        const addNewButton = document.getElementById("addNewButton");
+        const addNewFileTable = document.getElementById("addNewFileTable")
+        const addNewFolderName = document.getElementById("addNewFolderName")
+
+        if (addNewButton) {
+            addNewButton.addEventListener("click", () => {
+              console.log("asd")
+                fetch("http://localhost:1575/paths/insert", {
+                    method: "POST",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify({
+                        "FileTable": addNewFileTable.value.replace(/ /g, '_'),
+                        "FolderName": addNewFolderName.value.replace(/ /g, '_'),
+                    })
+                }).then(response => response.text())
+                .then(resptext => {
+                  addNewFileTable.value = ""
+                  addNewFolderName.value = ""
+                  alert(resptext)
+                })
+                    .catch(err => console.log(err))
+            });
+        }
+
+        const deleteInsertedButton = document.getElementById("deleteInsertedButton")
+        if (deleteInsertedButton) {
+            deleteInsertedButton.addEventListener("click", () => {
+                fetch("http://localhost:1575/inserted/delete", {
+                    method: "POST",
+                    headers: { "content-type": "application/json" },
+                }).then(response => response.text())
+                .then(resptext => alert(resptext))
+                    .catch(err => console.log(err))
+            });
+        }
+
+    /// Initial logs fetch
+    fetch("log.txt", {method: "GET",})
+      .then((resp) => resp.text())
+      .then((data) => {
+        logsInput.innerHTML = data;
+      })
+      .catch((err) => console.log(err));
+
+    const logsInput = document.getElementById("logsInput");
+    const reloadLogsButton = document.getElementById("reloadLogsButton");
+
+    if(reloadLogsButton){
+      reloadLogsButton.addEventListener('click',()=>{
+        fetch("log.txt", {method: "GET",})
+      .then((resp) => resp.text())
+      .then((data) => {
+        logsInput.innerHTML = data;
+      })
+      .catch((err) => console.log(err));
+          })
+    }
+
+
+    const clearLogsButton = document.getElementById("clearLogsButton");
+    if (clearLogsButton) {
+      clearLogsButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        fetch("http://localhost:1575/log/clear", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+        })
+          .then((response) => console.log(response))
+          .catch((err) => console.log(err));
+
+          fetch("log.txt", {method: "GET",})
+          .then((resp) => resp.text())
+          .then((data) => {
+            logsInput.innerHTML = data;
+          })
+          .catch((err) => console.log(err));
+      });
+    }
+
+  </script>
+
+  <!-- Gerekli scriptlerin eklenmesi -->
+  <script src="jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
