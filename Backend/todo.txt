@@ -1,3 +1,0 @@
-Json File Updater - Inserter
-FAILED // FRONTEND REACT // FAILED
-SUCCESS // FRONTEND EJS // SUCCESS
