@@ -1,14 +1,1 @@
-{
-  "SQLConnection": {
-    "ConnString": "DESKTOP-L0UADE5",
-    "Database": "Thirdb",
-    "Password": "guncel@123",
-    "Userid": "sa"
-  },
-  "DirectoryPaths": {
-    "DirectoryMainFolderPath": "C:\\Users\\tr\\Desktop\\Deneme",
-    "DirectoryInsertedFolderPath": "C:\\Users\\tr\\Desktop\\Inserted",
-    "ConfigPath": "C:\\Users\\tr\\Desktop\\Gits\\ImageFileTableTransferService\\Backend\\src\\config.json",
-    "PathsPath": "C:\\Users\\tr\\Desktop\\Gits\\ImageFileTableTransferService\\Backend\\src\\path.json"
-  }
-}
+{"SQLConnection":{"ConnString":"GNC-NB122","Database":"Thirdb","Password":"guncel@123","Userid":"sa"},"DirectoryPaths":{"DirectoryMainFolderPath":"C:\\Guncel\\ImageFileTableTransferService\\images\\Resimler","DirectoryInsertedFolderPath":"C:\\Guncel\\ImageFileTableTransferService\\images\\Aktarilanlar","DirectoryNotInsertedFolderPath":"C:\\Guncel\\ImageFileTableTransferService\\images\\Aktarilamayanlar","ConfigPath":"C:\\Guncel\\ImageFileTableTransferService\\services\\src\\config.json","PathsPath":"C:\\Guncel\\ImageFileTableTransferService\\services\\src\\path.json","LogsPath":"C:\\Guncel\\ImageFileTableTransferService\\services\\logs\\log.txt"},"ApplicationSettings":{"AppTitle":"Image File Table Transfer Services","AllowedExtensions":[{"extension":"PNG","allow":true},{"extension":"JPG","allow":true},{"extension":"SVG","allow":false},{"extension":"PDF","allow":true},{"extension":"JPEG","allow":false}],"MaxFileSize":"3145728"}}

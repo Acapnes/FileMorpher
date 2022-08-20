@@ -1,28 +1,67 @@
 {
   "TablePaths": [
     {
-      "FolderName": "Çözgü Raporları",
-      "FileTable": "FT06_CozguRaporlari"
+      "FolderName": "Çözgü_Raporları",
+      "FileTable": "FT06_CozguRaporlari",
+      "Status": false,
+      "SelectedDate": "1",
+      "CopyOrCut": false,
+      "OverWrite": false,
+      "Procedure": "asdsada"
     },
     {
-      "FolderName": "Dosya Ekleri",
-      "FileTable": "FT01_DosyaEkleri"
+      "FolderName": "Dosya_Ekleri",
+      "FileTable": "FT01_DosyaEkleri",
+      "Status": true,
+      "SelectedDate": "2",
+      "CopyOrCut": false,
+      "OverWrite": true,
+      "Procedure": "null"
     },
     {
-      "FolderName": "Jakar Desenleri",
-      "FileTable": "FT06_JakarDesenleri"
+      "FolderName": "Jakar_Desenleri",
+      "FileTable": "FT06_JakarDesenleri",
+      "Status": true,
+      "SelectedDate": "2",
+      "CopyOrCut": false,
+      "OverWrite": true,
+      "Procedure": "ASDASDASDAS"
     },
     {
-      "FolderName": "IKEA Txt Dosyaları",
-      "FileTable": "FT06_Import_IKEA_TXT_Dosyalari"
+      "FolderName": "IKEA_Txt_Dosyaları",
+      "FileTable": "FT06_Import_IKEA_TXT_Dosyalari",
+      "Status": true,
+      "SelectedDate": "2",
+      "CopyOrCut": false,
+      "OverWrite": true,
+      "Procedure": "eeeeeeee"
     },
     {
       "FolderName": "UrunProsesParametreleri",
-      "FileTable": "FT06_UrunProsesParametreleri"
+      "FileTable": "FT06_UrunProsesParametreleri",
+      "Status": true,
+      "SelectedDate": "2",
+      "CopyOrCut": false,
+      "OverWrite": false,
+      "Procedure": "asdadsad"
     },
     {
       "FolderName": "SpectFormlari",
-      "FileTable": "FT06_UrunSpecktformlari"
+      "FileTable": "FT06_UrunSpecktformlari",
+      "Status": true,
+      "SelectedDate": "1",
+      "CopyOrCut": false,
+      "OverWrite": false,
+      "Procedure": "denemdenemedeneme"
+    },
+    {
+      "FileTable": "FT06_JakarDesenleri",
+      "FolderName": "testlina",
+      "Status": true,
+      "SelectedDate": "2",
+      "CopyOrCut": false,
+      "OverWrite": false,
+      "Procedure": "null"
     }
   ]
 }
