@@ -19,9 +19,7 @@ const TransportImagesToInserted = (
       .then(() => {
         AddLog(`COPIED image ${pathName} to ${folderName} folder`);
       })
-      .catch((err) => {
-        //AddLog(err);
-      });
+      .catch((err) => {});
   } else {
     fse
       .move(src, dest, { overwrite: overWrite })
@@ -34,7 +32,6 @@ const TransportImagesToInserted = (
   }
 };
 
-/// Aktarılanlar klasöründeki resimleri siler
 const RemoveInsertedImages = () => {
   try {
     var ReadDirImages = fs.readdirSync(

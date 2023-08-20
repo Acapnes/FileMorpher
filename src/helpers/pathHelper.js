@@ -4,12 +4,8 @@ const path = require("path");
 const Paths = require("../path.json");
 const Config = require("../config.json")
 
-//"C:\\Users\\alper.senpacaci.staj\\Desktop\\ImageFileTableTransService"
-//const directoryPath = "C:\\Users\\tr\\Desktop\\Deneme";
-
 function SelectMainFolderListSubFolders() {
   const Readdir = fs.readdirSync(Config.DirectoryPaths.DirectoryMainFolderPath, function (err, files) {
-    //handling error
     if (err) {
       return console.log("Unable to scan directory: " + err);
     }
@@ -41,7 +37,6 @@ function ListSubFoldersImages() {
   return ImageArray
 }
 
-/// Returns Object Array -FileTable,FolderName-
 const ListFileTablesAndFolderNames = () => {
   var Folders = SelectMainFolderListSubFolders();
   var ListedArray = [];

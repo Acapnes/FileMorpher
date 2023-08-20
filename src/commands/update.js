@@ -1,19 +1,16 @@
 var sql = require("mssql");
-const SettingsConfig = require('../config.json')
-const { getConfig } = require("../utils/config");
+const SettingsConfig = require("../config.json");
 const { AddLog } = require("../logging/log");
 const ConvertToBinary = require("../utils/convert");
 const { editDynamicPathObjectStatus } = require("../helpers/objectHelper");
 const { TransportImagesToInserted } = require("./fileControls");
 
 function UpdateToDatabase(InsertToDatabaseToInsert, i, connection) {
-  var ps = new sql.PreparedStatement(connection); /// conn açılıyor
-  let ConvertedImage = ConvertToBinary(InsertToDatabaseToInsert[i].src); /// Güncellenecek olan image'in seçilme ve çevirme işlemi
-  ps.input("ImageBinary", sql.VarBinary); /// binary değer kaydediliyor
+  var ps = new sql.PreparedStatement(connection);
+  let ConvertedImage = ConvertToBinary(InsertToDatabaseToInsert[i].src);
+  ps.input("ImageBinary", sql.VarBinary);
   ps.prepare(
-    /// sql query
     `UPDATE ${InsertToDatabaseToInsert[i].FileTable} SET ImageBinary = @ImageBinary WHERE name = '${InsertToDatabaseToInsert[i].fileName}'`,
-    // check err
     function (err, recordset) {
       ps.execute({ ImageBinary: ConvertedImage }, function (err, records) {
         if (err) {
@@ -24,11 +21,10 @@ function UpdateToDatabase(InsertToDatabaseToInsert, i, connection) {
           editDynamicPathObjectStatus(
             InsertToDatabaseToInsert[i].FileTable,
             true
-          ); /// UPDATE FONKSİYONU İÇİN UPDATE EDİLECEKLERİ EDİTLER
+          );
           AddLog(
             `UPDATED ${InsertToDatabaseToInsert[i].fileName} for '${InsertToDatabaseToInsert[i].FileTable}' SUCCESSFULLY!`
           );
-          /// UPDATE başarılıysa aktarılanlar klasörüne gönderiliyor
           TransportImagesToInserted(
             InsertToDatabaseToInsert[i].src,
             SettingsConfig.DirectoryPaths.DirectoryInsertedFolderPath +
@@ -36,7 +32,7 @@ function UpdateToDatabase(InsertToDatabaseToInsert, i, connection) {
               InsertToDatabaseToInsert[i].pathName,
             InsertToDatabaseToInsert[i].pathName,
             "INSERTED",
-            false, /// true copy paste / false cut paste
+            false,
             InsertToDatabaseToInsert[i].overWrite
           );
         });
@@ -48,7 +44,3 @@ function UpdateToDatabase(InsertToDatabaseToInsert, i, connection) {
 module.exports = {
   UpdateToDatabase,
 };
-
-// UPDATE table_name
-// SET column1 = value1, column2 = value2, ...
-// WHERE condition;

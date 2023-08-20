@@ -2,8 +2,6 @@ const fs = require("fs");
 const SettingsConfig = require("../../config.json");
 const { AddLog } = require("../../logging/log");
 
-
-/// Path.json FileTable,FolderName,Status update etme fonksiyonu
 function PathsUpdater(
   FileTable,
   FolderName,
@@ -61,7 +59,6 @@ function PathsStatusUpdater(Status, Index) {
   }
 }
 
-/// path.json yeni path ekleme
 function PathAdd(FileTable, FolderName) {
   try {
     let json = fs.readFileSync(

@@ -4,7 +4,6 @@ const { getConfig, setConfig } = require("../../utils/config");
 const Paths = require("../../path.json");
 const { AddLog } = require("../../logging/log");
 
-/// FileTable'ın durumunu kontrol ettikten sonra ekleme sırasında bu fonksiyona filetable gönderilip durumu kontrol ediliyor
 function FileTableStatusAfterCheck(FileTable) {
   const TablePaths = Paths.TablePaths;
   for (let i = 0; i < TablePaths.length; i++) {
@@ -28,7 +27,6 @@ async function ConnVeriablesCheck(ConnString, Database, Userid, Password) {
   }
 }
 
-/// FileTable state'ini query ile kontrol eder
 async function FileTableStatusCheck(FileTable) {
   const pool = new sql.ConnectionPool(getConfig());
 

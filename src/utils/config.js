@@ -1,6 +1,5 @@
 const SettingsConfig = require("../config.json")
 
-/// Butun projedeki sql komutlarının kullandıgı config
 function getConfig() {
   return {
     server: SettingsConfig.SQLConnection.ConnString,

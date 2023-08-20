@@ -1,17 +1,17 @@
 {
   "TablePaths": [
     {
-      "FolderName": "Çözgü_Raporları",
-      "FileTable": "FT06_CozguRaporlari",
+      "FolderName": "Solve_Reports",
+      "FileTable": "FT06_Solve_Reports",
       "Status": false,
       "SelectedDate": "1",
       "CopyOrCut": false,
       "OverWrite": false,
-      "Procedure": "asdsada"
+      "Procedure": "Example_1"
     },
     {
-      "FolderName": "Dosya_Ekleri",
-      "FileTable": "FT01_DosyaEkleri",
+      "FolderName": "Additional_Files",
+      "FileTable": "FT01_Additional_Files",
       "Status": true,
       "SelectedDate": "2",
       "CopyOrCut": false,
@@ -19,44 +19,44 @@
       "Procedure": "null"
     },
     {
-      "FolderName": "Jakar_Desenleri",
-      "FileTable": "FT06_JakarDesenleri",
+      "FolderName": "Jakar_Designs",
+      "FileTable": "FT06_Jakar_Designs",
       "Status": true,
       "SelectedDate": "2",
       "CopyOrCut": false,
       "OverWrite": true,
-      "Procedure": "ASDASDASDAS"
+      "Procedure": "Example_2"
     },
     {
-      "FolderName": "IKEA_Txt_Dosyaları",
-      "FileTable": "FT06_Import_IKEA_TXT_Dosyalari",
+      "FolderName": "IKEA_Txt_Files",
+      "FileTable": "FT06_Import_IKEA_Txt_Files",
       "Status": true,
       "SelectedDate": "2",
       "CopyOrCut": false,
       "OverWrite": true,
-      "Procedure": "eeeeeeee"
+      "Procedure": "Example_2"
     },
     {
-      "FolderName": "UrunProsesParametreleri",
-      "FileTable": "FT06_UrunProsesParametreleri",
+      "FolderName": "Product_Process_Parameters",
+      "FileTable": "FT06_Product_Process_Parameters",
       "Status": true,
       "SelectedDate": "2",
       "CopyOrCut": false,
       "OverWrite": false,
-      "Procedure": "asdadsad"
+      "Procedure": "Example_3"
     },
     {
-      "FolderName": "SpectFormlari",
-      "FileTable": "FT06_UrunSpecktformlari",
+      "FolderName": "Spect_Forms",
+      "FileTable": "FT06_Product_Spec_Forms",
       "Status": true,
       "SelectedDate": "1",
       "CopyOrCut": false,
       "OverWrite": false,
-      "Procedure": "denemdenemedeneme"
+      "Procedure": "Example_1"
     },
     {
-      "FileTable": "FT06_JakarDesenleri",
-      "FolderName": "testlina",
+      "FileTable": "FT06_Jakar_Designs",
+      "FolderName": "Test_Lina",
       "Status": true,
       "SelectedDate": "2",
       "CopyOrCut": false,

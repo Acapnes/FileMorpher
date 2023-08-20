@@ -17,22 +17,16 @@ const { TransportImagesToInserted } = require("./fileControls");
 const { UpdateToDatabase } = require("./update");
 
 function InsertToDatabase() {
-  /// Folderların içerisindeki resimlerin listesini alır
   var InsertToDatabaseToInsert = ListSubFoldersImages();
-
-  /// Connection u açar ve bağlantının başarılı olup olmadığını kontrol eder
   var connection = sql.connect(getConfig(), function (err) {
     if (err) {
       AddLog(err);
-      /// Bağlantı başarısızsa fonksiyondan çıkar hata mesajı basar.
       return;
     }
 
-    /// Bağlantı başarılıysa LoopInsert methoduna girip ekleme işlemini döngü ile gerçekleştirmeye başlar
     for (let i = 0; i < InsertToDatabaseToInsert.length; i++) {
       LoopInsert(InsertToDatabaseToInsert, i, connection);
     }
-    //UpdateProcedure();
   });
 
   return false;
@@ -48,23 +42,18 @@ function UpdateProcedure() {
 }
 
 function LoopInsert(InsertToDatabaseToInsert, i, connection) {
-  // Eklenecek resimin FileTable'da olup olmadığını check eder yoksa ekler varsa loga hata yazar
   AlreadyInsertedImageToDatabaseCheck(
     InsertToDatabaseToInsert[i].FileTable,
     InsertToDatabaseToInsert[i].fileName
   ).then((check) => {
     if (check) {
-      /// Eklenecek FileTable'ın status değerini kontrol eder - True ise eklenir False ise fonksiyona girmez.
       if (FileTableStatusAfterCheck(InsertToDatabaseToInsert[i].FileTable)) {
-        /// Eklenecek olan image aktarılanlar folderında varsa eklenme işlemi olmuyor ve aktarılamayanlar klasörüne gönderiliyor
         if (!InsertedCheck(InsertToDatabaseToInsert[i].pathName)) {
-          var ps = new sql.PreparedStatement(connection); /// conn açılıyor
-          let ConvertedImage = ConvertToBinary(InsertToDatabaseToInsert[i].src); /// eklenecek olan image'in seçilme ve çevirme işlemi
-          ps.input("ImageBinary", sql.VarBinary); /// binary değer kaydediliyor
+          var ps = new sql.PreparedStatement(connection);
+          let ConvertedImage = ConvertToBinary(InsertToDatabaseToInsert[i].src);
+          ps.input("ImageBinary", sql.VarBinary);
           ps.prepare(
-            /// sql query
             `INSERT INTO ${InsertToDatabaseToInsert[i].FileTable} VALUES ('${InsertToDatabaseToInsert[i].fileName}','${InsertToDatabaseToInsert[i].extension}',@ImageBinary)`,
-            // check err
             function (err, recordset) {
               ps.execute(
                 { ImageBinary: ConvertedImage },
@@ -77,11 +66,10 @@ function LoopInsert(InsertToDatabaseToInsert, i, connection) {
                     editDynamicPathObjectStatus(
                       InsertToDatabaseToInsert[i].FileTable,
                       true
-                    ); /// UPDATE FONKSİYONU İÇİN UPDATE EDİLECEKLERİ EDİTLER
+                    );
                     AddLog(
                       `INSERTED ${InsertToDatabaseToInsert[i].fileName} for '${InsertToDatabaseToInsert[i].FileTable}' SUCCESSFULLY!`
                     );
-                    /// Eklenme başarılıysa aktarılanlar klasörüne gönderiliyor
                     TransportImagesToInserted(
                       InsertToDatabaseToInsert[i].src,
                       SettingsConfig.DirectoryPaths
@@ -99,7 +87,6 @@ function LoopInsert(InsertToDatabaseToInsert, i, connection) {
             }
           );
         } else if (InsertedCheck(InsertToDatabaseToInsert[i].pathName)) {
-          /// Aktarılamayanlar klasörüne gönderme işlemi // move silme tutma if buraya
           TransportImagesToInserted(
             InsertToDatabaseToInsert[i].src,
             SettingsConfig.DirectoryPaths.DirectoryNotInsertedFolderPath +
@@ -114,7 +101,6 @@ function LoopInsert(InsertToDatabaseToInsert, i, connection) {
       } else if (
         !FileTableStatusAfterCheck(InsertToDatabaseToInsert[i].FileTable)
       ) {
-        /// Eklenme işlemi başarısızsa console error
         AddLog(
           `ERROR! ${InsertToDatabaseToInsert[i].FileTable} status off or not exist.`
         );
@@ -131,7 +117,7 @@ function LoopInsert(InsertToDatabaseToInsert, i, connection) {
       }
     } else if (!check) {
       if (InsertToDatabaseToInsert[i].overWrite) {
-        UpdateToDatabase(InsertToDatabaseToInsert,i,connection)
+        UpdateToDatabase(InsertToDatabaseToInsert, i, connection);
       } else {
         AddLog(
           `Error! ${InsertToDatabaseToInsert[i].fileName} already inserted to ${InsertToDatabaseToInsert[i].FileTable}`

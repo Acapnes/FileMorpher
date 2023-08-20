@@ -3,7 +3,6 @@ const SettingsConfig = require("../../config.json");
 const { ConnVeriablesCheck } = require("../checks/databaseChecks");
 const { AddLog } = require("../../logging/log");
 
-/// Config.json SQLConnectionsettings update etme fonksiyonu
 async function ConfigConnectionUpdater(ConnString, Database, Userid, Password) {
   const result = await ConnVeriablesCheck(
     ConnString,
@@ -46,7 +45,6 @@ async function ConfigConnectionUpdater(ConnString, Database, Userid, Password) {
   return result;
 }
 
-/// Config.json içerisindeki pathleri (Aktarılanlar klasörünün pathi gibi) update etme fonksiyonu
 function ConfigPathsUpdater(
   dirname,
   MainFolderPath,
