@@ -10,6 +10,9 @@ FileMorpher introduces a seamless solution for converting files within a designa
 
 Experience simplified file conversions with FileMorpher in a Windows environment. Access the LAN web portal on the designated port and effortlessly select the files for conversion. Customize the process by configuring output formats, quality settings, and other parameters. Once configured, initiate the conversion with a simple click. The Node.js Windows service takes control, efficiently processing the chosen files. Stay updated on the conversion progress through the web portal. Upon completion, download the converted files directly from the interface. Seamlessly merging automation and user control, FileMorpher provides an efficient solution for file conversions in a Windows environment.
 
+### Enhanced Capabilities with MSSQL
+
+FileMorpher also offers the capability to leverage data from the MSSQL database for enhanced functionality. This integration empowers users to perform operations such as converting files based on data stored in the MSSQL database and manipulating FileStream processes. 
 
 ## Key Features and Technologies
 
