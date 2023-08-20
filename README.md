@@ -1,7 +1,5 @@
 # FileMorpher - LAN Web Portal for Windows File Conversions
 
-![Project Screenshot](screenshot.png)
-
 Welcome to the FileMorpher project! This initiative was developed during my internship and represents a remarkable journey into creating a versatile Node.js-based Windows service. The heart of the project is the automated conversion of files within a specified folder. This is made possible through a custom Windows service and a user-friendly LAN web portal.
 
 ## Project Overview
