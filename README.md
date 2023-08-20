@@ -2,9 +2,14 @@
 
 Welcome to the FileMorpher project! This initiative was developed during my internship and represents a remarkable journey into creating a versatile Node.js-based Windows service. The heart of the project is the automated conversion of files within a specified folder. This is made possible through a custom Windows service and a user-friendly LAN web portal.
 
-## Project Overview
+## FileMorpher Overview
 
 FileMorpher introduces a seamless solution for converting files within a designated folder. This is achieved through the orchestration of a Node.js Windows service, which manages the entire conversion process. Meanwhile, an ExpressJS-powered LAN web portal, designed using EJS, offers a user-friendly interface for file selection, configuration, and result retrieval.
+
+### Effortless User Experience
+
+Experience simplified file conversions with FileMorpher in a Windows environment. Access the LAN web portal on the designated port and effortlessly select the files for conversion. Customize the process by configuring output formats, quality settings, and other parameters. Once configured, initiate the conversion with a simple click. The Node.js Windows service takes control, efficiently processing the chosen files. Stay updated on the conversion progress through the web portal. Upon completion, download the converted files directly from the interface. Seamlessly merging automation and user control, FileMorpher provides an efficient solution for file conversions in a Windows environment.
+
 
 ## Key Features and Technologies
 
@@ -22,8 +27,4 @@ FileMorpher introduces a seamless solution for converting files within a designa
 
 ## Logging and Log Management
 
-The service includes a robust logging mechanism, with detailed operations and activities logged to a TXT file for comprehensive analysis and monitoring.
-
-## About FileMorpher
-
-FileMorpher simplifies file conversions within a Windows environment through seamless automation and user interaction. Access the LAN web portal on the specified port and choose the files you want to convert. Tailor the conversion process by configuring output formats, quality, and other parameters. Start the conversion process with a click. The Node.js Windows service takes over and processes the selected files. Track the conversion progress directly from the web portal as FileMorpher processes the files. Once conversions are done, download the converted files directly from the web interface. FileMorpher merges automation and user control, offering an efficient solution for file conversions in a Windows environment.
+FileMorpher includes a logging service that diligently records each step of the process. After every operation or automated task, detailed logs are generated and stored in a designated TXT file. This meticulous log tracking ensures transparency in your application's activities and provides a valuable resource for monitoring and analysis.
